@@ -1,0 +1,15 @@
+artifact_uri: file:///home/neba/Desktop/forecasting%20%20sales/mlruns/0/f0f125f02fd9481eb377a1ee66881e8e/artifacts
+end_time: 1627309239466
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: f0f125f02fd9481eb377a1ee66881e8e
+run_uuid: f0f125f02fd9481eb377a1ee66881e8e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1627309239429
+status: 3
+tags: []
+user_id: neba

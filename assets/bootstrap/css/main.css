@@ -1,0 +1,14 @@
+#main:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background: rgba(116, 112, 112, 0.9);
+}
+
+#main {
+  /* display: none; */
+}

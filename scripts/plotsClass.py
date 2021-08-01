@@ -3,9 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import logging
 
-LOG_FORMAT = "%(LeveLname)s %(asctime)s - %(message)s"
-logging.basicConfig(filename="../Log/logs.log", level=logging.DEBUG, format=LOG_FORMAT)
-logger = logging.getLogger()
+
 
 class Plot():
 

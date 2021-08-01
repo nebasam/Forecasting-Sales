@@ -107,3 +107,4 @@ class Plot():
         """
         df[col1].fillna(df[col1].median(), inplace = True)
         return df
+    

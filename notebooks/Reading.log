@@ -4,3 +4,13 @@
 2021-08-01 14:45:41,613 : INFO : logger : file read as csv from ../data/test.csv
 2021-08-01 14:49:58,253 : INFO : logger : file read as csv from ../data/train_store.csv
 2021-08-01 14:49:58,339 : INFO : logger : file read as csv from ../data/test.csv
+2021-08-01 15:11:23,515 : INFO : logger : file read as csv from ../data/train_store.csv
+2021-08-01 15:11:23,592 : INFO : logger : file read as csv from ../data/test.csv
+2021-08-01 15:15:00,366 : INFO : logger : file read as csv from ../data/train_store.csv
+2021-08-01 15:15:00,366 : INFO : logger : file read as csv from ../data/train_store.csv
+2021-08-01 15:15:00,393 : INFO : logger : file read as csv from ../data/test.csv
+2021-08-01 15:15:00,393 : INFO : logger : file read as csv from ../data/test.csv
+2021-08-01 15:41:50,213 : INFO : logger : file read as csv from ../data/train_store.csv
+2021-08-01 15:41:51,918 : INFO : logger : file read as csv from ../data/test.csv
+2021-08-01 15:44:27,987 : INFO : logger : file read as csv from ../data/train_store.csv
+2021-08-01 15:44:28,054 : INFO : logger : file read as csv from ../data/test.csv

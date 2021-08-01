@@ -21,8 +21,7 @@ import numpy as np
 import pandas as pd
 from datetime import datetime
 #Plotting and Visualizations
-import matplotlib.pyplot as plt
-# %matplotlib inline 
+import matplotlib.pyplot as plt 
 import seaborn as sns
 from scipy import stats
 import itertools

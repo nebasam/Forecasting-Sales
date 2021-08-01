@@ -4,11 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Home - Brand</title>
+    <title>ROSSMANN-PHARMACEUTICALS-SALES-PREDICTION</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" href="assets/bootstrap/css/main.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
 <script type="text/javascript">
     function open_file() {
@@ -29,6 +32,9 @@
     </nav>
     <header class="masthead" id="main" style="background-image:url('assets/img/intro-bg.jpg');">
         <div class="intro-body">
+            <form id="upload-file" method="post" enctype="multipart/form-data">
+
+            
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 mx-auto">
@@ -37,13 +43,30 @@
                         <p style="font-size: 30px;">Upload your CSV file here to make sales prediction</p>
                     </div>
                 </div>
-                <input type="file" style="display: none;" id="input_file">
+                <input type="file" style="display: none;" id="input_file" name="csv">
             </div><button class="btn btn-primary" id="mainBtn" type="button" style="background: rgb(66, 220, 163);" onclick="open_file()">UPLOAD FILE</button>
+        </form>
+        <div class="image-section" style="display:none;">
+            <div class="img-preview">
+                <div id="imagePreview">
+                </div>
+            </div>
+            <div>
+                <button type="button" class="btn btn-primary btn-lg " id="btn-predict">Predict!</button>
+            </div>
+        </div>
+    
+        <div class="loader" style="display:none;"></div>
+    
+        <h3 id="result">
+            <span> </span>
+        </h3>
         </div>
     </header>
     <div class="map-clean"></div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/grayscale.js"></script>
+    <script src="{{ url_for('static', filename='assets/main.js') }}" type="text/javascript"></script>
 </body>
 
 </html>

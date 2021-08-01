@@ -94,3 +94,6 @@ class Plot():
         plt.yticks( fontsize=14)
         logger.debug("Plot the scatter plot")
         plt.show()
+    def fill_median (self,df,col1):
+        df[col1].fillna(df[col1].median(), inplace = True)
+        return df

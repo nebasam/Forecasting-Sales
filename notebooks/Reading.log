@@ -1,0 +1,6 @@
+2021-08-01 14:36:27,723 : INFO : logger : file read as csv from ../data/train_store.csv
+2021-08-01 14:36:27,769 : INFO : logger : file read as csv from ../data/test.csv
+2021-08-01 14:45:41,571 : INFO : logger : file read as csv from ../data/train_store.csv
+2021-08-01 14:45:41,613 : INFO : logger : file read as csv from ../data/test.csv
+2021-08-01 14:49:58,253 : INFO : logger : file read as csv from ../data/train_store.csv
+2021-08-01 14:49:58,339 : INFO : logger : file read as csv from ../data/test.csv

@@ -56,10 +56,8 @@ def upload():
         # TODO: make prediction
 
         results = make_prediction(df)
-        dates = df.index.values
-        dates = dates.astype(str).tolist()
-
-        return '<h1>Uploaded</h1>'
+        print('Printing result',results[0])
+        return str(int(results[0]))
 
 @app.route('/analysis')
 def predict():

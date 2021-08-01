@@ -6,6 +6,9 @@ import logging
 
 
 class Plot():
+    def __init__(self, df):
+        
+        self.df = df
 
     def plot_bar(self, df:pd.DataFrame, x_col:str, y_col:str, title:str, xlabel:str, ylabel:str)->None:
         """

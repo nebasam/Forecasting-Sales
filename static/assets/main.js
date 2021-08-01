@@ -50,7 +50,8 @@ $(document).ready(function () {
           $(".loader").hide();
           $("#result").fadeIn(600);
           console.log("data:", data);
-          $("#result").text(" Result:  " + data);
+          $("#result").text("The Predicted number of sales is:  " + data);
+          $("#mainBtn").html("Upload File");
           console.log("Success!");
         },
       });

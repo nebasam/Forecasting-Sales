@@ -20,11 +20,11 @@ $(document).ready(function () {
       }
     }
     $("#input_file").change(function () {
-        alert('Changed')
       $(".image-section").show();
       $("#btn-predict").show();
       $("#result").text("");
       $("#result").hide();
+      $("#mainBtn").html("Uploaded");
       readURL(this);
     });
   

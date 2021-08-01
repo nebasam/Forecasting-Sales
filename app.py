@@ -4,7 +4,7 @@ import pandas as pd
 import pickle
 import sys
 import numpy as np
-from werkzeug.utils import secure_filename
+from werkzeug.utils import secure_filename, send_file
 
 app = Flask(__name__)
 
@@ -16,14 +16,24 @@ def static_dir(path):
 def index():
     return render_template("index.html")
 
+
+@app.route('/download', methods=['GET', 'POST'])
+def download_file():
+    return send_from_directory('downloads', 'a.csv')
+
 FEATURES = ['Store', 'DayOfWeek', 'Open', 'Promo', 'StateHoliday',
             'SchoolHoliday', 'Year', 'Month', 'Day', 'WeekOfYear']
 
 def make_prediction(df):
+    if os.path.exists('downloads/a.csv'):
+        os.remove("downloads/a.csv")
     print(df.shape)
     loaded_model = pickle.load(open("./model/model.pkl", 'rb'))
     df = df[FEATURES]
     result = loaded_model.predict(df)
+    print('The Type is: ',type(result))
+    save_file = pd.DataFrame(np.exp(result), columns=['Sales'])
+    save_file.to_csv('downloads/a.csv')
     print("First result: ", result)
     print("RESULT:", np.exp(result))
     
@@ -50,11 +60,6 @@ def upload():
         df['Month'] = df.index.month
         df['Day'] = df.index.day
         df['WeekOfYear'] = df.index.weekofyear
-        print(df.head())
-        print("Index", df.index)
-        # TODO: feed into sklearn pipeline
-        # TODO: make prediction
-
         results = make_prediction(df)
         print('Printing result',results[0])
         return str(int(results[0]))

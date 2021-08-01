@@ -1,6 +1,7 @@
 $(document).ready(function () {
     // Init
     $(".image-section").hide();
+    $("#downloadFile").hide()
     $(".loader").hide();
     $("#result").hide();
   
@@ -49,6 +50,7 @@ $(document).ready(function () {
           // Get and display the result
           $(".loader").hide();
           $("#result").fadeIn(600);
+          $("#downloadFile").show()
           console.log("data:", data);
           $("#result").text("The Predicted number of sales is:  " + data);
           $("#mainBtn").html("Upload File");

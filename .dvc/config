@@ -3,4 +3,4 @@
 ['remote "dvc-remote"']
     url = /tmp/dvc-storage
 ['remote "storage"']
-    url = gdrive://1N8GoSwER5u87q2Co_kmjodh-0htG1myx
+    url = gdrive://1uadYWHzSigFLGeczk8XYPoLhGeEVSGb2

@@ -50,19 +50,9 @@ def upload():
         df['Month'] = df.index.month
         df['Day'] = df.index.day
         df['WeekOfYear'] = df.index.weekofyear
-        print(df.head())
-        print("Index", df.index)
-        # TODO: feed into sklearn pipeline
-        # TODO: make prediction
-
         results = make_prediction(df)
         print('Printing result',results[0])
         return str(int(results[0]))
-
-@app.route('/analysis')
-def predict():
-    return render_template('analysis.html')
-
 
 @app.route("/about")
 def about():

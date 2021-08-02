@@ -24,4 +24,5 @@ The dvc version of data is found in this directory
 Test.py and other function used for Plotting graphs are found in plots.py module
 ## model
 model in pickle and python format is found here
-
+## tests
+all tests for the script can be found here

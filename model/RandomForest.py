@@ -21,129 +21,11 @@ from sklearn.ensemble import RandomForestRegressor
 logging.basicConfig(level=logging.WARN)
 logger = logging.getLogger(__name__)
 
-
-path = 'data/train_store.csv'
-repo = '/home/neba/Desktop/forecasting  sales'
-version = 'mergedv1'
-
-data_url = dvc.api.get_url(
-    path=path,
-    repo=repo,
-    rev= version
-)
 if __name__ == "__main__":
     warnings.filterwarnings("ignore")
     np.random.seed(50)
 df_train_store = pd.read_csv('data/train_store.csv',index_col=0)
-mlflow.log_param('df_train_store_data_url', data_url)
-mlflow.log_param('data_version', version)
-mlflow.log_param('model_type', 'Random Forest')
 
-#test = pd.read_csv('data/test.csv',index_col="Date", parse_dates=True)
-
-class TransformingTrainStoreData:
-   
-    def __init__(self):
-        pass
-
-    def to_category(self,df):    
-        df["Open"] = df["Open"].astype("category")
-        df["DayOfWeek"] = df["Open"].astype("category")
-        df["Promo"] = df["Promo"].astype("category")
-        df["StateHoliday"] = df["StateHoliday"].astype("category")
-        df["SchoolHoliday"] = df["SchoolHoliday"].astype("category")
-        df['StateHoliday'] = df['StateHoliday'].astype("str").astype("category")
-        df["StoreType"] = df["StoreType"].astype("category")
-        df["Assortment"] = df["Assortment"].astype("category")
-        df["CompetitionOpenSinceMonth"] = df["CompetitionOpenSinceMonth"].astype("category")
-        df["CompetitionOpenSinceYear"] = df["CompetitionOpenSinceYear"].astype("category")
-        df["Promo2"] = df["Promo2"].astype("category")
-        df["Promo2SinceYear"] = df["Promo2SinceYear"].astype("category")
-        df["PromoInterval"] = df["PromoInterval"].astype("category")
-        df['Year'] = df['Year'].astype("category")
-        df['Month'] = df['Month'].astype("category")
-        return df
-    
-        
-    def convert_to_datetime(self, df):  
-        try:
-            df['Date'] = pd.to_datetime(df_train_store['Date'])
-            return df
-        except:
-            pass
-    
-    def sort_by_date(self, df):
-        return df.sort_values(by=["Date"], ascending=False)     
-    
-        
-    def Transformed(self, df):
-        df = self.to_category(df)
-        df = self.convert_to_datetime(df)
-
-        return df
-
-class ExtractingCOlumns:
-
-    def __init__(self):
-        pass
-   
-    # Let's get Days from Date and delete Date since we already have its Year and Month:
-    def transform_date(self, df):
-        df['Day']=df.Date.dt.day
-        df['Day'] = df['Day'].astype("category")
-        del df["Date"]
-        return df
-    
-    def to_month_category(self, df):
-       df["Monthcategory"] = df["Day"].apply(lambda x: 'BegMonth' if x < 11 else ('Midmonth' if x<21 else 'EndMonth'))
-       return df
-    def add_weekday_col(self, df):
-      
-        df["Weekends"] = df["DayOfWeek"].apply(lambda x: 1 if x > 5 else 0)
-        df["Weekdays"] = df["DayOfWeek"].apply(lambda x: 1 if x <= 5 else 0)
-        return df
-    def process(self, df): 
-        df = self.transform_date(df)
-        df = self.add_weekday_col(df)
-        df = self.to_month_category(df)
-        
-        return df
-
-class Preprocess:
-    
-    def __init__(self):
-        pass
-    
-    def encode_train_store_data(self, df):
-        
-        StateHolidayEncoder = preprocessing.LabelEncoder()
-        DayInMonthEncoder = preprocessing.LabelEncoder()
-        StoreTypeEncoder = preprocessing.LabelEncoder()
-        AssortmentEncoder = preprocessing.LabelEncoder()
-        PromoIntervalEncoder = preprocessing.LabelEncoder()
-        MonthcategoryEncoder = preprocessing.LabelEncoder()
-
-        df['StateHoliday'] = StateHolidayEncoder.fit_transform(df['StateHoliday'])
-        df['StoreType'] = StoreTypeEncoder.fit_transform(df['StoreType'])
-        df['Assortment'] = AssortmentEncoder.fit_transform(df['Assortment'])
-        df['PromoInterval'] = PromoIntervalEncoder.fit_transform(df['PromoInterval'])
-        df['Monthcategory'] = MonthcategoryEncoder.fit_transform(df['Monthcategory'])
-
-        return df
-    def process(self, df):
-        df = self.encode_train_store_data(df)        
-        return df
-df_train_store = TransformingTrainStoreData().Transformed(df_train_store)
-df_train_store = ExtractingCOlumns().process(df_train_store)
-df_train_store = Preprocess().process(df_train_store)
-
-# cleaning the data set
-def clean_dataset(df):
-    assert isinstance(df, pd.DataFrame)
-    df.dropna(inplace=True)
-    indices_to_keep = ~df.isin([np.nan, np.inf, -np.inf]).any(1)
-    return df[indices_to_keep].astype(np.float64)
-clean_dataset(df_train_store)
 
 def loss_function(y, yhat):
     rmspe = np.sqrt(np.mean((y - yhat)**2))
@@ -178,7 +60,7 @@ class RandomForestModelPipeline:
     def train(self):
         preprocessor = self.Preproccessor()
         pipeline = Pipeline(steps=[('preprocessor', preprocessor),
-                                   ('regressor', RandomForestRegressor(n_estimators=124,
+                                   ('regressor', RandomForestRegressor(n_estimators=10,
                                 criterion='mse',
                                 max_depth=5,
                                 min_samples_split=2,

@@ -37,8 +37,6 @@ def make_prediction(df):
     df.to_csv('downloads/result.csv')
     print("First result: ", result)
     print("RESULT:", np.exp(result))
-    
-    return np.exp(result)
 
 
 @app.route('/predict', methods=['GET', 'POST'])

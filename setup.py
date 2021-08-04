@@ -12,8 +12,8 @@ requirements = ['pandas>=1.1.0', 'numpy>=1.19.0', 'sklearn',
 test_requirements = ['pytest>=3', ]
 
 setup(
-    author="Daniel Zelalem",
-    email="danielzelalemheru@gmail.com",
+    author="Nebiyu Samuel",
+    email="neba.samuel17@gmail.com",
     python_requires='>=3.6',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
@@ -29,7 +29,7 @@ setup(
     long_description=readme,
     include_package_data=True,
     keywords='scripts,data exploration, random forest, linear regression, LSTM, RNN',
-    name='pharmaceutical-sales-prediction',
+    name='pharmaceutical-sales-Forecasting',
     packages=find_packages(include=['scripts', 'scripts.*']),
     test_suite='tests',
     tests_require=test_requirements,
